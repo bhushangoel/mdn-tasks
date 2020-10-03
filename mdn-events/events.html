@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        div {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 480px;
+            height: 380px;
+            border-radius: 10px;
+            background-color: #eee;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+        }
+
+        .hidden {
+            left: -50%;
+        }
+
+        .showing {
+            left: 50%;
+        }
+
+        div video {
+            display: block;
+            width: 400px;
+            margin: 40px auto;
+        }
+
+    </style>
+</head>
+<body>
+<button>Display video</button>
+
+<div class="hidden">
+    <video>
+        <source src="rabbit320.mp4" type="video/mp4">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<script>
+
+    const btn = document.querySelector('button');
+    const videoBox = document.querySelector('div');
+    const video = document.querySelector('video');
+
+    btn.onclick = function () {
+        console.log('btn click');
+        videoBox.setAttribute('class', 'showing');
+    };
+
+
+    var vbf = function () {
+        console.log('video box click');
+        videoBox.setAttribute('class', 'hidden');
+    };
+    videoBox.addEventListener('click', vbf, true);
+
+
+    var vf = function () {
+        console.log('video click');
+        video.play();
+    };
+    video.addEventListener('click', vf, true);
+
+</script>
+</body>
+</html>
